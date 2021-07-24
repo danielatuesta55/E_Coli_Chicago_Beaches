@@ -1,3 +1,7 @@
+# Setting up the git ignore
+DS_store
+DS_Store
+.ipynb_checkpoints
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
