@@ -1,0 +1,33 @@
+DROP TABLE test;
+DROP TABLE beach;
+CREATE TABLE test(
+	id INT PRIMARY KEY,
+	station_name VARCHAR(250));
+	
+CREATE TABLE full_result(
+	station_name VARCHAR(250),
+    r_date DATE,
+    precipitation DECIMAL,
+    temperature_max DECIMAL,
+	water_temperature DECIMAL,
+    dna_sample_1_reading DECIMAL,
+    dna_sample_2_reading DECIMAL,
+    dna_reading_mean DECIMAL
+);
+
+CREATE TABLE prediction(
+	station_name VARCHAR(250),
+    r_date DATE,
+    precipitation DECIMAL,
+    temperature_max DECIMAL,
+	water_temperature DECIMAL
+);
+
+ALTER TABLE full_result add column id serial primary key;
+ALTER TABLE prediction add column id serial primary key;
+
+ALTER TABLE test add column dna_sample_2_reading DECIMAL;
+
+SELECT * FROM full_result;
+SELECT * FROM prediction;
+SELECT * FROM beach;
