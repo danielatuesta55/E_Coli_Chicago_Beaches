@@ -20,10 +20,8 @@ Inspired by [these](https://www.chicagoriver.org/issues/policy/climate-change) [
 ### Dataset
 1. E Coli Reading Levels: https://data.cityofchicago.org/Parks-Recreation/Beach-Lab-Data/2ivx-z93u
 2. Water Temperature: https://water.weather.gov/ahps/
-![image](https://user-images.githubusercontent.com/77638567/127745854-83af7e6b-1834-415d-9726-a4172b2d2541.png)
-
 3. Air Temperature / Precipitation: https://data.cityofchicago.org/Parks-Recreation/Beach-Lab-Data/2ivx-z93u
-![image](https://user-images.githubusercontent.com/77638567/127745864-2f2aa996-03b5-444a-85ed-b69c4ea5365a.png)
+
 
 
 
