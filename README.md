@@ -16,3 +16,31 @@ Inspired by [these](https://www.chicagoriver.org/issues/policy/climate-change) [
 8. Tune model as necessary.
 9. Use model to predict e. coli levels.
 10. Visualize predictions on deployed app.
+
+### Dataset
+1. E Coli Reading Levels: https://data.cityofchicago.org/Parks-Recreation/Beach-Lab-Data/2ivx-z93u
+2. Water Temperature: 
+3. Air Temperature / Precipitation:
+
+
+### Results
+Below is scatter plots of each weather variable to E Coli reading levels:
+
+![DNA_Precip](Resources/DNA_Precip.png)
+
+![DNA_AirTemp](Resources/DNA_AirTemp.png)
+
+![DNA_WaterTemp](Resources/DNA_WaterTemp.png)
+
+
+By joining the three weather variables and the resulting E Coli reading levels into one dataset, we were able to create a linear regression model. Below shows the plot on difference between the model predicted values and the training/test data:
+
+![Model](Resources/Model.png)
+
+
+The mean standard error and R2 values for the prediction model is shown below:
+
+![Calculation](Resources/MSE_and_R2.png)
+
+
+### How to Run Code
