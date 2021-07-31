@@ -98,13 +98,75 @@
     <div class="section" id="section2">
         <div class="row">
             <h1 style="text-align: center;">Is It A Good Beach Day?</h1>
-            <h3>Input Your Own Data to Predict Beach Safety!</h3>
+            <h3 style="text-align: center;">Input Your Own Data to Predict Beach Safety!</h3>
+            <div class="container">
+                <div class="row">
+                    <div style = "margin-left:20px;" class="col-md-offset-2 col-md-6">
+                        <form method="POST" action="/send1" role="form1", name="predictionform">
+                            <div class="form-group" >
+                                <label for="inputSampleID">Sample ID</label>
+                                <input type="number" class="form-control" id="inputSampleID" name="id" placeholder="Sample ID">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPrecipitation">Precipitation (in)</label>
+                                <input type="number" step="0.001" class="form-control" id="inputPrecipitation" name="precipitation" placeholder="1.23">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTemperatureMax">Maximum Temperature(F)</label>
+                                <input type="number" step="0.001" class="form-control" id="inputTemperatureMax" name="temperature_max" placeholder="65.0">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputWaterTemperature">Water Temperature(F) (XX.X)</label>
+                                <input type="number" step="0.0001" class="form-control" id="inputWaterTemperature" name="water_temperature" placeholder="65.0">
+                            </div>
+                            <input type="submit" value="submit" class="btn btn-default">
+                        </form>
+                    </div>
+                </div>
+    
+            </div>
+    
         </div>
     </div>
     <div class="section" id="section3">
         <div class="row">
-            <h1 style="font-size:60px;">Data Submission</h1>
-            <h3>Submit Your Data To Help Refine Our Model!</h3>
+            <h1 style="text-align: center;">Help Us Improve Our Model</h1>
+            <h3 style="text-align: center;">Input Bacteria Test Data</h3>
+            <div class="container">
+                <div class="row">
+                    <div style="margin-left:50px;" class="col-md-offset-2 col-md-9">
+                        <form method="POST" action="/send" role="form", name="dnaform">
+                            <div class="form-group">
+                                <label for="inputSampleID">Sample ID</label>
+                                <input type="number" class="form-control" id="inputSampleID" name="id" placeholder="Sample ID">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPrecipitation">Precipitation (X.XX)</label>
+                                <input type="number" step="0.001" class="form-control" id="inputPrecipitation" name="precipitation" placeholder="1.23">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTemperatureMax">Maximum Temperature(F)</label>
+                                <input type="number" step="0.001" class="form-control" id="inputTemperatureMax" name="temperature_max" placeholder="65.0">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputWaterTemperature">Water Temperature(C) (XX.X)</label>
+                                <input type="number" step="0.0001" class="form-control" id="inputWaterTemperature" name="water_temperature" placeholder="65.0">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDnaSample1">DNA Sample 1</label>
+                                <input type="number" step="0.0001" class="form-control" id="inputDnaSample1" name="dna_sample_1_reading" placeholder="DNA Sample 1">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDnaSample2">DNA Sample 2</label>
+                                <input type="number" step="0.0001" class="form-control" id="inputDnaSample2" name="dna_sample_2_reading" placeholder="DNA Sample 2">
+                            </div>
+                            <input type="submit" value="submit" class="btn btn-default">
+                        </form>
+                    </div>
+                </div>
+    
+            </div>
+    
         </div>
     </div>
     <div class="section" id="section4">
