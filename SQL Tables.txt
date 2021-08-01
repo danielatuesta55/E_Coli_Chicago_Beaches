@@ -1,0 +1,26 @@
+DROP TABLE full_result;
+DROP TABLE prediction;
+
+CREATE TABLE full_result(
+	station_name VARCHAR(250),
+    r_date DATE,
+    precipitation_inches DECIMAL,
+    max_air_temperature DECIMAL,
+	max_water_temperature DECIMAL,
+    dna_sample_1_reading DECIMAL,
+    dna_sample_2_reading DECIMAL,
+    dna_reading_mean DECIMAL
+);
+
+CREATE TABLE prediction(
+	station_name VARCHAR(250),
+    r_date DATE,
+    precipitation_inches DECIMAL,
+    max_air_temperature DECIMAL,
+	max_water_temperature DECIMAL
+);
+
+ALTER TABLE full_result add column id serial primary key;
+ALTER TABLE prediction add column id serial primary key;
+
+SELECT  FROM full_result;
