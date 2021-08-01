@@ -19,7 +19,7 @@ app = Flask(__name__)
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("postgresql://USERNAME:PASSWORD@localhost:5432/DATABASENAME")
+engine = create_engine("postgresql://USERNAME:PASSWORD@localhost:5432/chicago_beaches")
 
 # create a configured "Session" class
 Session = sessionmaker(bind=engine)
@@ -37,7 +37,7 @@ Base.prepare(engine, reflect=True)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Save reference to the table
-Full_result = Base.classes.full_result
+full_result = Base.classes.full_result
 prediction = Base.classes.prediction
 
 db = SQLAlchemy(app)
@@ -49,9 +49,9 @@ class DNA(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     station_name = db.Column(db.String(250))
     r_date = db.Column(db.Date)
-    precipitation = db.Column(db.Float)
-    temperature_max = db.Column(db.Float)
-    water_temperature = db.Column(db.Float)
+    precipitation_inches = db.Column(db.Float)
+    max_air_temperature = db.Column(db.Float)
+    max_water_temperature = db.Column(db.Float)
     dna_sample_1_reading = db.Column(db.Float)
     dna_sample_2_reading = db.Column(db.Float)
     dna_reading_mean = db.Column(db.Float)
@@ -65,9 +65,9 @@ class Prediction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     station_name = db.Column(db.String(250))
     r_date = db.Column(db.Date)
-    precipitation = db.Column(db.Float)
-    temperature_max = db.Column(db.Float)
-    water_temperature = db.Column(db.Float)
+    precipitation_inches = db.Column(db.Float)
+    max_air_temperature = db.Column(db.Float)
+    max_water_temperature = db.Column(db.Float)
     
     def __repr__(self):
         return '<Prediction %r>' % (self.station_name)
@@ -86,16 +86,18 @@ def send():
         id = request.form["id"]
         station_name = "CHICAGO OHARE INTERNATIONAL AIRPORT IL US"
         r_date = date.today()
-        precipitation = request.form["precipitation"]
-        temperature_max = request.form["temperature_max"]
-        water_temperature = request.form["water_temperature"]
+        precipitation_inches = request.form["precipitation"]
+        max_air_temperature = request.form["temperature_max"]
+        max_water_temperature = request.form["water_temperature"]
         dna_sample_1_reading = request.form["dna_sample_1_reading"]
         dna_sample_2_reading = request.form["dna_sample_2_reading"]
         dna_reading_mean = (float(dna_sample_1_reading)+float(dna_sample_2_reading))/2
 
         myobject = DNA(id = id, station_name = station_name, r_date = r_date, 
-        precipitation=precipitation,temperature_max=temperature_max,
-        water_temperature=water_temperature,dna_sample_1_reading=dna_sample_1_reading,
+        precipitation_inches=precipitation_inches,
+        max_air_temperature_max=max_air_temperature,
+        max_water_temperature=max_water_temperature,
+        dna_sample_1_reading=dna_sample_1_reading,
         dna_sample_2_reading=dna_sample_2_reading,dna_reading_mean=dna_reading_mean)
 
         session.add(myobject)
@@ -110,15 +112,16 @@ def send1():
         id = request.form["id"]
         station_name = "CHICAGO OHARE INTERNATIONAL AIRPORT IL US"
         r_date = date.today()
-        precipitation = request.form["precipitation"]
-        temperature_max = request.form["temperature_max"]
-        water_temperature = request.form["water_temperature"]
+        precipitation_inches = request.form["precipitation"]
+        max_air_temperature = request.form["temperature_max"]
+        max_water_temperature = request.form["water_temperature"]
         
         
 
         myobject = Prediction(id = id, station_name = station_name, r_date = r_date, 
-        precipitation=precipitation,temperature_max=temperature_max,
-        water_temperature=water_temperature)
+        precipitation_inches=precipitation_inches,
+        max_air_temperature=max_air_temperature,
+        max_water_temperature=max_water_temperature)
 
         session.add(myobject)
         session.commit()
