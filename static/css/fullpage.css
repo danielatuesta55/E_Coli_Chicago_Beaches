@@ -243,6 +243,11 @@ html.fp-enabled,
 }
 #section0{
     background-image: url(https://cdn.choosechicago.com/uploads/2019/06/CC-northave-beach-aerial-e1565982585831.jpg);
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #FDE49C;
     opacity:.95;
 }
 #section0 h1{
@@ -273,49 +278,27 @@ html.fp-enabled,
 }
 
 
-#plotly1{
+#discussion{
     height: 600px;
     width: 1300px;
-    /* background: #d1b28f; */
 }
 
-#plotly1 h1{
+#discussion h1{
+    text-align: center;
+    font-size: 80px;
+    padding-top: -800px;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#discussion h2{
     text-align: center;
     font-size: 80px;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 5px;
     padding-right: 5px;
-}
-
-#plotly2{
-    height: 600px;
-    width: 1300px;
-    /* background: #d1b28f; */
-}
-
-#plotly2 h1{
-    text-align: center;
-    font-size: 65px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-#plotly3{
-    height: 600px;
-    width: 1300px;
-    /* background: #d1b28f; */
-}
-
-#plotly3 h1{
-    text-align: center;
-    font-size: 80px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 .py-5 {
@@ -328,19 +311,6 @@ html.fp-enabled,
     margin-left: auto;
     margin-right: auto;
     width: 99%;
-}
-
-#happiness{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 99%;
-}
-
-#global_consumption{
-    margin-left: 140px;
-    margin-right: 20px;
-    width: 50%;
 }
 
 .card{
