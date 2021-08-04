@@ -21,7 +21,7 @@ app = Flask(__name__)
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("postgresql://USERNAME:PASSWORD@localhost:5432/chicago_beaches")
+engine = create_engine("postgresql://postgres:postgres@localhost:5432/chicago_beaches")
 
 # create a configured "Session" class
 Session = sessionmaker(bind=engine)
@@ -131,9 +131,7 @@ def send1():
                                        dtype=float)
         inputs_scaled = x_scaler.transform(user_input_df)
         scaled_predict = model.predict(inputs_scaled)
-        print(scaled_predict)
         output = y_scaler.inverse_transform(scaled_predict)
-        print(output)
         prediction = float(output[0])
         print(prediction)
 
@@ -150,6 +148,18 @@ def send1():
         return redirect("#3rdPage", code=302)
 
     return render_template("index.html")
+
+@app.route("/image")
+def image():
+
+    """Return prediction data"""
+    # obj = session.query(Prediction).order_by(Prediction.id.desc()).all()
+    obj = session.query(Prediction).filter(Prediction.id == session.query(func.max(Prediction.id))).all()
+    print(obj)
+
+    session.close()
+
+    return jsonify(obj)
 
 if __name__ == "__main__":
     app.run()

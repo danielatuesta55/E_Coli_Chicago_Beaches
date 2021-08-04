@@ -1,5 +1,5 @@
 function addPhoto(){
-    d3.json("/send1").then(
+    d3.json("/image").then(
         console.log()
         let prediction = 
         if (prediction < 700){
