@@ -2,6 +2,8 @@
 import os
 from datetime import date
 import pickle
+import joblib
+import pandas as pd
 from flask import (Flask, render_template,jsonify,request,redirect)
 import sqlalchemy
 from flask_sqlalchemy import SQLAlchemy
@@ -68,6 +70,7 @@ class Prediction(db.Model):
     precipitation_inches = db.Column(db.Float)
     max_air_temperature = db.Column(db.Float)
     max_water_temperature = db.Column(db.Float)
+    prediction = db.Column(db.Float)
     
     def __repr__(self):
         return '<Prediction %r>' % (self.station_name)
@@ -109,6 +112,7 @@ def send():
 @app.route("/send1", methods=["GET", "POST"])
 def send1():
     if request.method == "POST":
+        # pull info from form
         id = request.form["id"]
         station_name = "CHICAGO OHARE INTERNATIONAL AIRPORT IL US"
         r_date = date.today()
@@ -116,15 +120,33 @@ def send1():
         max_air_temperature = request.form["temperature_max"]
         max_water_temperature = request.form["water_temperature"]
         
+        # import machine learning model and scaler
+        model = pickle.load(open("Jupyterlab_Notebooks/model.p","rb"))
+        x_scaler = joblib.load("Jupyterlab_Notebooks/scaler.pkl")
+        y_scaler = joblib.load("Jupyterlab_Notebooks/yscaler.pkl")
         
+        # input input variable into model to get prediction
+        user_input_df = pd.DataFrame([[precipitation_inches, max_air_temperature, max_water_temperature]],
+                                       columns=['precipitation_inches', 'max_air_temperature', 'max_water_temperature'],
+                                       dtype=float)
+        inputs_scaled = x_scaler.transform(user_input_df)
+        scaled_predict = model.predict(inputs_scaled)
+        print(scaled_predict)
+        output = y_scaler.inverse_transform(scaled_predict)
+        print(output)
+        prediction = float(output[0])
+        print(prediction)
 
+        # add input variables to the postgres database
         myobject = Prediction(id = id, station_name = station_name, r_date = r_date, 
         precipitation_inches=precipitation_inches,
         max_air_temperature=max_air_temperature,
-        max_water_temperature=max_water_temperature)
+        max_water_temperature=max_water_temperature, prediction=prediction)
 
         session.add(myobject)
         session.commit()
+        
+        # return to slide 3
         return redirect("#3rdPage", code=302)
 
     return render_template("index.html")

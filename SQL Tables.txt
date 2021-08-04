@@ -22,5 +22,6 @@ CREATE TABLE prediction(
 
 ALTER TABLE full_result add column id serial primary key;
 ALTER TABLE prediction add column id serial primary key;
+ALTER TABLE prediction add column prediction DECIMAL;
 
 SELECT  FROM full_result;
