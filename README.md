@@ -32,5 +32,8 @@ The mean standard error and R2 values for the prediction model is shown below:
 Here are the coefficients of the variables (precipitation, air temperature, water temperature):
 ![Coefficient](Resources/coefficient.png)
 
+Here is a table of difference between the y_test and the predicted y values from the model to help gauge variance between the two:
+![Delta](Resources/delta.png)
+
 Below is a quick test of the model by comparing the predicted output to the actual data:
-![Coefficient](Resources/test.png)
+![Test](Resources/test.png)
