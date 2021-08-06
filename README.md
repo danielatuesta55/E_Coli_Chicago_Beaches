@@ -29,5 +29,8 @@ The mean standard error and R2 values for the prediction model is shown below:
 
 ![Calculation](Resources/MSE_and_R2.png)
 
+Here are the coefficients of the variables (precipitation, air temperature, water temperature):
+![Coefficient](Resources/coefficient.png)
 
-### How to Run Code
+Below is a quick test of the model by comparing the predicted output to the actual data:
+![Coefficient](Resources/test.png)
