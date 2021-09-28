@@ -21,7 +21,7 @@ app = Flask(__name__)
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("postgresql://postgres:postgres@localhost:5432/chicago_beaches")
+engine = create_engine("postgresql://USERNAME:PASSWORD@localhost:5432/chicago_beaches")
 
 # create a configured "Session" class
 Session = sessionmaker(bind=engine)
